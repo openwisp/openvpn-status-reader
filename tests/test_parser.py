@@ -65,6 +65,26 @@ def test_parser(openvpn_status):
     assert ccd_v6_routing.last_ref == datetime.datetime(2015, 6, 18, 8, 12, 9)
 
 
+def test_parser_with_transport_prefixed_peers(datadir):
+    parser = LogParser.fromstring(
+        datadir.join("openvpn-status-transport-prefixes.txt").read()
+    )
+    status = parser.parse()
+
+    assert (
+        str(status.client_list["181.126.36.3:1194"].real_address) == "181.126.36.3:1194"
+    )
+    assert (
+        str(status.client_list["181.126.36.4:1194"].real_address) == "181.126.36.4:1194"
+    )
+    assert (
+        str(status.client_list["2001:db8::3:1194"].real_address) == "2001:db8::3:1194"
+    )
+    assert (
+        str(status.client_list["2001:db8::4:1194"].real_address) == "2001:db8::4:1194"
+    )
+
+
 def test_parser_with_syntax_errors(broken_status):
     def catch_syntax_error(seq):
         datafile = broken_status.join("%d.txt" % seq)

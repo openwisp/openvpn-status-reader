@@ -45,6 +45,8 @@ Models
         :type: :class:`~.utils.PeerAddress`
 
         The real IP address and port of client.
+        OpenVPN 2.7 transport prefixes (``udp4``, ``tcp4``, ``udp6``, and
+        ``tcp6``) are normalized when parsing status logs.
 
     .. attribute:: bytes_received
 

@@ -43,6 +43,19 @@ def test_parse_peer(text, peer):
 
 
 @mark.parametrize(
+    "text,peer",
+    [
+        ("udp4:181.126.36.3:1194", PeerAddress(IPv4Address("181.126.36.3"), 1194)),
+        ("tcp4:181.126.36.4:1194", PeerAddress(IPv4Address("181.126.36.4"), 1194)),
+        ("udp6:[2001:db8::3]:1194", PeerAddress(IPv6Address("2001:db8::3"), 1194)),
+        ("tcp6:[2001:db8::4]:1194", PeerAddress(IPv6Address("2001:db8::4"), 1194)),
+    ],
+)
+def test_parse_transport_prefixed_peer(text, peer):
+    assert parse_peer(text) == peer
+
+
+@mark.parametrize(
     "text,virtual_addr",
     [
         ("10.0.0.1", IPv4Address("10.0.0.1")),

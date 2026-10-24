@@ -27,7 +27,13 @@ def parse_time(time):
 def parse_peer(peer):
     if isinstance(peer, PeerAddress):
         return peer
+    for protocol in ("udp4:", "tcp4:", "udp6:", "tcp6:"):
+        if peer.startswith(protocol):
+            peer = peer.removeprefix(protocol)
+            break
     host, port = peer.rsplit(":", 1)
+    if host.startswith("[") and host.endswith("]"):
+        host = host[1:-1]
     return PeerAddress(ipaddress.ip_address(host), int(port))
 
 
