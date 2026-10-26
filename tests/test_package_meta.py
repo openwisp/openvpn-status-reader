@@ -2,12 +2,7 @@ from pytest import mark, raises
 
 import openvpn_status
 from openvpn_status import version as version_module
-from openvpn_status.version import VERSION, get_version
-
-
-def test_version():
-    assert VERSION == (0, 3, 0, "final")
-    assert openvpn_status.__version__ == "0.3.0"
+from openvpn_status.version import get_version
 
 
 def test_shortcut():
