@@ -72,7 +72,7 @@ jobs:
       pull-requests: write
       actions: write
       contents: read
-    uses: openwisp/openwisp-utils/.github/workflows/reusable-bot-ci-failure.yml@a36b30b0c20637fef4fe8eb434ef27615feeaa74 # master
+    uses: openwisp/openwisp-utils/.github/workflows/reusable-bot-ci-failure.yml@c2a620fb23a2fb00b2bcf6da1e80bba8c7899ec0 # master
     with:
       pr_number: ${{ needs.find-pr.outputs.pr_number }}
       head_sha: ${{ github.event.workflow_run.head_sha }}
