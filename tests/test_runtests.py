@@ -65,3 +65,19 @@ def test_runs_a_parametrized_address_case(selector):
     )
     assert result.returncode == 0, result.stderr
     assert "1 passed" in result.stdout
+
+
+def test_runs_a_parametrized_option_case():
+    selector = (
+        "tests/test_runtests.py::test_rejects_unsupported_arguments"
+        "[--override-ini=addopts=-p malicious]"
+    )
+    result = subprocess.run(
+        [str(SCRIPT), selector],
+        cwd=SCRIPT.parent,
+        env={**os.environ, "PYTEST_ADDOPTS": "-o addopts="},
+        capture_output=True,
+        text=True,
+    )
+    assert result.returncode == 0, result.stderr
+    assert "1 passed" in result.stdout
