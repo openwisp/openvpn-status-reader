@@ -105,5 +105,6 @@ Run the test suite with ``./runtests``. To run one test, pass its path:
 
     ./runtests tests/test_package_meta.py::test_shortcut
 
-The entry point accepts test paths under ``tests/`` and the ``-q``,
-``-v``, ``-x``, and ``--cov-report=xml`` options.
+The entry point accepts test paths under ``tests/``, including
+parametrized test IDs, and the ``-q``, ``-v``, ``-x``, and
+``--cov-report=xml`` options.

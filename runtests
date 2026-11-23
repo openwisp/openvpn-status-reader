@@ -2,8 +2,8 @@
 # Run the test suite or selected tests.
 set -euo pipefail
 
-# Limit selectors to test files and optional pytest class or method names.
-test_pattern='^tests/([[:alnum:]_]+/)*test_[[:alnum:]_]+\.py(::[[:alnum:]_.-]+)*$'
+# Limit selectors to test files, test names, and optional parametrized IDs.
+test_pattern='^tests/([[:alnum:]_]+/)*test_[[:alnum:]_]+\.py(::[[:alnum:]_.-]+)*(\[[[:alnum:]_. -]+\])?$'
 for argument in "$@"; do
   case "$argument" in
     tests|-q|-v|-x|--cov-report=xml) continue ;;
