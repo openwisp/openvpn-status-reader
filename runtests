@@ -3,7 +3,9 @@
 set -euo pipefail
 
 # Limit selectors to test files, test names, and optional parametrized IDs.
-test_pattern='^tests/([[:alnum:]_]+/)*test_[[:alnum:]_]+\.py(::[[:alnum:]_.-]+)*(\[[[:alnum:]_. -]+\])?$'
+test_pattern='^tests/([[:alnum:]_]+/)*test_[[:alnum:]_]+\.py(::[[:alnum:]_.-]+)*'
+# Address parameters can contain slashes, colons, and nested brackets.
+test_pattern+='(\[([[:alnum:]_.:/ -]|\[|\])+\])?$'
 for argument in "$@"; do
   case "$argument" in
     tests|-q|-v|-x|--cov-report=xml) continue ;;
