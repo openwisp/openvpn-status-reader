@@ -2,7 +2,7 @@ name: CI Failure Bot
 
 on:
   workflow_run:
-    workflows: ["OpenWISP CI Build"]
+    workflows: ["OpenVPN Status Reader CI"]
     types:
       - completed
 
