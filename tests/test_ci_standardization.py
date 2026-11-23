@@ -17,6 +17,7 @@ class TestCiStandardization:
             "-p",
             "--override-ini=addopts=-p malicious",
             "../test.py",
+            "tests/test_probe.py[abc/x]",
             "tests/test_package_meta.py::test_get_version[$(id)]",
         ],
     )

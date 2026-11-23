@@ -2,10 +2,10 @@
 # Run the test suite or selected tests.
 set -euo pipefail
 
-# Limit selectors to test files, test names, and optional parametrized IDs.
-test_pattern='^tests/([[:alnum:]_]+/)*test_[[:alnum:]_]+\.py(::[[:alnum:]_.-]+)*'
+# Require a test name before parameter IDs so pytest cannot treat them as paths.
+test_pattern='^tests/([[:alnum:]_]+/)*test_[[:alnum:]_]+\.py'
 # Parameter IDs can contain addresses, option values, and nested brackets.
-test_pattern+='(\[([[:alnum:]_.:/= -]|\[|\])+\])?$'
+test_pattern+='((::[[:alnum:]_.-]+)*::test_[[:alnum:]_.-]+\[([[:alnum:]_.:/= -]|\[|\])+\]|(::[[:alnum:]_.-]+)*)$'
 for argument in "$@"; do
   case "$argument" in
     tests|-q|-v|-x|--cov-report=xml) continue ;;
