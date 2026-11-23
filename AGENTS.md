@@ -87,7 +87,9 @@ documentation next, and this file is supplemental.
 - Keep tests quiet on success. Capture and assert code-under-test output rather
   than leaving it unasserted.
 - Use `./runtests` as the test entry point in CI, documentation, and local
-  work. Pass a test path to run a focused test.
+  work. Pass a test path to run a focused test. Enforce an explicit allowlist
+  of reviewed, safe flags and reject all others: test runner options can execute
+  code outside the selected tests.
 
 ## Security Rules
 
