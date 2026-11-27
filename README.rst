@@ -95,3 +95,16 @@ More details are in the `API reference`_.
 .. _api reference: https://openvpn-status-reader.readthedocs.io/en/latest/api.html
 
 .. _openvpn-status: https://github.com/sgares/openvpn-status
+
+Tests
+-----
+
+Run the test suite with ``./runtests``. To run one test, pass its path:
+
+.. code-block:: shell
+
+    ./runtests tests/test_package_meta.py::test_shortcut
+
+The entry point accepts test paths under ``tests/``, including
+parametrized test IDs, and the ``-q``, ``-v``, ``-x``, and
+``--cov-report=xml`` options.

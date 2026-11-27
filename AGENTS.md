@@ -72,6 +72,10 @@ documentation next, and this file is supplemental.
   comments before the relevant code block.
 - Update documentation when behavior, settings, public APIs, setup steps, or
   supported versions change.
+- Add CI dependencies to `./install-ci-deps.sh` and cache them. Keep cache
+  inputs in sync with the installer and dependency files. Follow the shared
+  structure and internal naming in `.github/workflows/ci.yml` so OpenWISP
+  automation works across repositories.
 
 ## Testing and QA
 
@@ -82,6 +86,10 @@ documentation next, and this file is supplemental.
   class or module scope only when genuinely reused.
 - Keep tests quiet on success. Capture and assert code-under-test output rather
   than leaving it unasserted.
+- Use `./runtests` as the test entry point in CI, documentation, and local
+  work. Pass a test path to run a focused test. Enforce an explicit allowlist
+  of reviewed, safe flags and reject all others: test runner options can execute
+  code outside the selected tests.
 
 ## Security Rules
 
